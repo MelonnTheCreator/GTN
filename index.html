@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="menu-container active">
+        <h1>Select a Level</h1>
+        <div id="level-buttons"></div>
+        <button onclick="showAdminLogin()">Admin Mode</button>
+    </div>
+    <div class="game-container">
+        <h1>Guess the Number Game</h1>
+        <p>Guess the number between <span id="rangeStart">1</span> and <span id="rangeEnd">10</span></p>
+        <input type="number" id="guessInput" min="1" max="10">
+        <button onclick="checkGuess()">Guess</button>
+        <div class="result" id="result"></div>
+        <div class="last-guess" id="lastGuess"></div>
+        <p class="level-info">Level: <span id="level">1</span></p>
+        <button onclick="showAdminLogin()">Admin Mode</button>
+        <div class="admin-controls" id="adminControls">
+            <p>Correct Answer: <span id="adminAnswer"></span></p>
+            <p>Set New Level: <input type="number" id="newLevel" min="1" max="30"></p>
+            <p>Set Custom Answer: <input type="number" id="customAnswer"></p>
+            <button onclick="setLevel()">Set Level</button>
+            <button onclick="setCustomAnswer()">Set Custom Answer</button>
+            <button onclick="exitAdminMode()">Exit Admin Mode</button>
+        </div>
+        <div class="game-footer">Created and Scripted by Kameron Grant</div>
+    </div>
+    <audio id="bg-music" src="background-music.mp3" loop></audio>
+    <audio id="correct-sound" src="correct-sound.mp3"></audio>
+    <audio id="wrong-sound" src="wrong-sound.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
