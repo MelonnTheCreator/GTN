@@ -9,6 +9,7 @@
 <body>
     <div class="menu-container active">
         <h1>Select a Level</h1>
+        <input type="text" id="searchBar" placeholder="Search for a level" onkeyup="searchLevels()">
         <div id="level-buttons"></div>
         <button class="admin-button" onclick="showAdminLogin()">Admin Mode</button>
     </div>
@@ -29,6 +30,7 @@
             <button onclick="setCustomAnswer()">Set Custom Answer</button>
             <button onclick="exitAdminMode()">Exit Admin Mode</button>
         </div>
+        <button class="level-menu-button" onclick="showLevelMenu()">Level Menu</button>
         <div class="game-footer">Created and Scripted by MelonnTheCreator</div>
     </div>
     <audio id="bg-music" src="background-music.mp3" loop></audio>

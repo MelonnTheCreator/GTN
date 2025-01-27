@@ -17,6 +17,18 @@ const generateLevelButtons = () => {
     }
 };
 
+const searchLevels = () => {
+    const query = document.getElementById('searchBar').value.toLowerCase();
+    const buttons = document.querySelectorAll('.level-button');
+    buttons.forEach(button => {
+        if (button.innerText.toLowerCase().includes(query)) {
+            button.style.display = 'inline-block';
+        } else {
+            button.style.display = 'none';
+        }
+    });
+};
+
 const selectLevel = (selectedLevel) => {
     level = selectedLevel;
     rangeEnd = level <= 10 ? Math.pow(10, level) : (level - 10) * 1000000000 + Math.pow(10, 10);
@@ -68,7 +80,7 @@ const resetLevels = () => {
 
 const showAdminLogin = () => {
     let password = prompt("Enter admin password:");
-    if (password === "Melonn") enterAdminMode();
+    if (password === "Kameron Grant") enterAdminMode();
     else alert("Incorrect password.");
 };
 
@@ -107,6 +119,11 @@ const setCustomAnswer = () => {
     } else {
         alert(`Invalid answer. Please enter a number between 1 and ${rangeEnd}.`);
     }
+};
+
+const showLevelMenu = () => {
+    document.querySelector('.game-container').classList.remove('active');
+    document.querySelector('.menu-container').classList.add('active');
 };
 
 document.addEventListener('DOMContentLoaded', () => {

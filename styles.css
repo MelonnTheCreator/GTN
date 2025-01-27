@@ -22,6 +22,10 @@ body {
     box-sizing: border-box;
     overflow: auto;
 }
+#level-buttons {
+    max-height: 70vh;
+    overflow-y: auto;
+}
 .active {
     display: block;
 }
@@ -109,4 +113,20 @@ button:hover {
     width: 30px;
     height: 30px;
     opacity: 0;
+}
+.level-menu-button {
+    background: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background 0.3s;
+    width: 90%;
+    max-width: 250px;
+}
+.level-menu-button:hover {
+    background: #0056b3;
 }
