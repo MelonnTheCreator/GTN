@@ -1,6 +1,7 @@
 let levelsUnlocked = localStorage.getItem('levelsUnlocked') ? parseInt(localStorage.getItem('levelsUnlocked')) : 1;
-let level = 1, rangeEnd = 10, randomNumber = Math.floor(Math.random() * rangeEnd) + 1, attempts = 0, adminMode = false;
+let level = 1, rangeEnd = 10, randomNumber = Math.floor(Math.random() * rangeEnd) + 1, attempts = 0, adminMode = false, guessCount = 0;
 let level1000BeatenCount = localStorage.getItem('level1000BeatenCount') ? parseInt(localStorage.getItem('level1000BeatenCount')) : 0;
+let levelStartTime, intervalId;
 
 const bgMusic = document.getElementById('bg-music'), correctSound = document.getElementById('correct-sound'), wrongSound = document.getElementById('wrong-sound');
 bgMusic.play();
@@ -31,13 +32,19 @@ const selectLevel = (selectedLevel) => {
     document.getElementById('adminAnswer').innerText = randomNumber; // Update correct answer in real time
     document.querySelector('.menu-container').classList.remove('active');
     document.querySelector('.game-container').classList.add('active');
-    generateLevelButtons(); // Update level buttons to highlight current level
+    guessCount = 0;
+    document.getElementById('guessCount').innerText = guessCount;
+    levelStartTime = new Date();
+    clearInterval(intervalId);
+    intervalId = setInterval(updateTime, 1000);
 };
 
 const checkGuess = () => {
     let userGuess = document.getElementById("guessInput").value, result = document.getElementById("result"), lastGuess = document.getElementById("lastGuess");
     lastGuess.innerHTML = `Last Guess: ${userGuess}`;
     attempts++;
+    guessCount++;
+    document.getElementById('guessCount').innerText = guessCount;
     if (userGuess == randomNumber) {
         correctSound.play();
         if (level < 1000) {
@@ -122,6 +129,12 @@ const showLevelMenu = () => {
     document.querySelector('.game-container').classList.remove('active');
     document.querySelector('.menu-container').classList.add('active');
     generateLevelButtons(); // Refresh level buttons to highlight the current level
+};
+
+const updateTime = () => {
+    const now = new Date();
+    const elapsedTime = Math.floor((now - levelStartTime) / 1000);
+    document.getElementById('timeSpent').innerText = elapsedTime;
 };
 
 document.addEventListener('DOMContentLoaded', () => {

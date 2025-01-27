@@ -73,7 +73,7 @@ button:hover {
     background: #28a745;
     color: white;
 }
-.result, .last-guess, .level-info, .admin-info {
+.result, .last-guess, .level-info, .guess-info, .time-info {
     margin-top: 15px;
     font-size: 16px;
     color: #333;
