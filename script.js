@@ -1,5 +1,6 @@
 let levelsUnlocked = localStorage.getItem('levelsUnlocked') ? parseInt(localStorage.getItem('levelsUnlocked')) : 1;
 let level = 1, rangeEnd = 10, randomNumber = Math.floor(Math.random() * rangeEnd) + 1, attempts = 0, adminMode = false;
+let level1000BeatenCount = localStorage.getItem('level1000BeatenCount') ? parseInt(localStorage.getItem('level1000BeatenCount')) : 0;
 
 const bgMusic = document.getElementById('bg-music'), correctSound = document.getElementById('correct-sound'), wrongSound = document.getElementById('wrong-sound');
 bgMusic.play();
@@ -18,6 +19,7 @@ const generateLevelButtons = () => {
         button.onclick = () => selectLevel(i);
         levelButtonsContainer.appendChild(button);
     }
+    document.getElementById('level1000BeatenCount').innerText = `Times Level 1000 Beaten: ${level1000BeatenCount}`;
 };
 
 const selectLevel = (selectedLevel) => {
@@ -47,6 +49,9 @@ const checkGuess = () => {
             selectLevel(level + 1); // Automatically go to the next level
         } else {
             result.innerHTML = `Congratulations! You've completed all levels.`;
+            level1000BeatenCount++;
+            localStorage.setItem('level1000BeatenCount', level1000BeatenCount);
+            document.getElementById('level1000BeatenCount').innerText = `Times Level 1000 Beaten: ${level1000BeatenCount}`;
             resetLevels();
             result.classList.remove("wrong");
             result.classList.add("correct");
