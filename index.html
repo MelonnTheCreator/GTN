@@ -10,7 +10,7 @@
     <div class="menu-container active">
         <h1>Select a Level</h1>
         <div id="level-buttons"></div>
-        <button onclick="showAdminLogin()">Admin Mode</button>
+        <button class="admin-button" onclick="showAdminLogin()">Admin Mode</button>
     </div>
     <div class="game-container">
         <h1>Guess the Number Game</h1>
@@ -20,16 +20,16 @@
         <div class="result" id="result"></div>
         <div class="last-guess" id="lastGuess"></div>
         <p class="level-info">Level: <span id="level">1</span></p>
-        <button onclick="showAdminLogin()">Admin Mode</button>
+        <button class="admin-button" onclick="showAdminLogin()">Admin Mode</button>
         <div class="admin-controls" id="adminControls">
             <p>Correct Answer: <span id="adminAnswer"></span></p>
-            <p>Set New Level: <input type="number" id="newLevel" min="1" max="30"></p>
+            <p>Set New Level: <input type="number" id="newLevel" min="1" max="1000"></p>
             <p>Set Custom Answer: <input type="number" id="customAnswer"></p>
             <button onclick="setLevel()">Set Level</button>
             <button onclick="setCustomAnswer()">Set Custom Answer</button>
             <button onclick="exitAdminMode()">Exit Admin Mode</button>
         </div>
-        <div class="game-footer">Created and Scripted by MelonnTheCreator</div>
+        <div class="game-footer">Created and Scripted by Kameron Grant</div>
     </div>
     <audio id="bg-music" src="background-music.mp3" loop></audio>
     <audio id="correct-sound" src="correct-sound.mp3"></audio>
