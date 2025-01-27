@@ -68,7 +68,7 @@ const resetLevels = () => {
 
 const showAdminLogin = () => {
     let password = prompt("Enter admin password:");
-    if (password === "Melonn") enterAdminMode();
+    if (password === "Ilikefemboys") enterAdminMode();
     else alert("Incorrect password.");
 };
 
