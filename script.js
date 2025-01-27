@@ -23,6 +23,18 @@ const generateLevelButtons = () => {
     document.getElementById('level1000BeatenCount').innerText = `Times Level 1000 Beaten: ${level1000BeatenCount}`;
 };
 
+const searchLevels = () => {
+    const query = document.getElementById('searchBar').value.toLowerCase();
+    const buttons = document.querySelectorAll('.level-button');
+    buttons.forEach(button => {
+        if (button.innerText.toLowerCase().includes(query)) {
+            button.style.display = 'inline-block';
+        } else {
+            button.style.display = 'none';
+        }
+    });
+};
+
 const selectLevel = (selectedLevel) => {
     level = selectedLevel;
     rangeEnd = level <= 10 ? Math.pow(10, level) : (level - 10) * 1000000000 + Math.pow(10, 10);
