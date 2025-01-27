@@ -69,6 +69,10 @@ button {
 button:hover {
     background: #0056b3;
 }
+.current-level {
+    background: #28a745;
+    color: white;
+}
 .result, .last-guess, .level-info, .admin-info {
     margin-top: 15px;
     font-size: 16px;

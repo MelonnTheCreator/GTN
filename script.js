@@ -12,21 +12,12 @@ const generateLevelButtons = () => {
         button.innerText = 'Level ' + i;
         button.classList.add('level-button');
         button.disabled = i > levelsUnlocked;
+        if (i === level) {
+            button.classList.add('current-level');
+        }
         button.onclick = () => selectLevel(i);
         levelButtonsContainer.appendChild(button);
     }
-};
-
-const searchLevels = () => {
-    const query = document.getElementById('searchBar').value.toLowerCase();
-    const buttons = document.querySelectorAll('.level-button');
-    buttons.forEach(button => {
-        if (button.innerText.toLowerCase().includes(query)) {
-            button.style.display = 'inline-block';
-        } else {
-            button.style.display = 'none';
-        }
-    });
 };
 
 const selectLevel = (selectedLevel) => {
@@ -38,6 +29,7 @@ const selectLevel = (selectedLevel) => {
     document.getElementById('adminAnswer').innerText = randomNumber; // Update correct answer in real time
     document.querySelector('.menu-container').classList.remove('active');
     document.querySelector('.game-container').classList.add('active');
+    generateLevelButtons(); // Update level buttons to highlight current level
 };
 
 const checkGuess = () => {
@@ -124,6 +116,7 @@ const setCustomAnswer = () => {
 const showLevelMenu = () => {
     document.querySelector('.game-container').classList.remove('active');
     document.querySelector('.menu-container').classList.add('active');
+    generateLevelButtons(); // Refresh level buttons to highlight the current level
 };
 
 document.addEventListener('DOMContentLoaded', () => {
