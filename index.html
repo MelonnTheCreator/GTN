@@ -3,42 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the Number Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Guess The Number</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="menu-container active">
-        <h1>Select a Level</h1>
-        <input type="text" id="searchBar" placeholder="Search for a level" onkeyup="searchLevels()">
-        <div id="level-buttons"></div>
-        <button class="admin-button" onclick="showAdminLogin()">Admin Mode</button>
-        <p id="level1000BeatenCount">Times Level 1000 Beaten: 0</p>
-    </div>
-    <div class="game-container">
-        <h1>Guess the Number Game</h1>
-        <p>Guess the number between <span id="rangeStart">1</span> and <span id="rangeEnd">10</span></p>
-        <input type="number" id="guessInput" min="1" max="10">
-        <button onclick="checkGuess()">Guess</button>
-        <div class="result" id="result"></div>
-        <div class="last-guess" id="lastGuess"></div>
-        <p class="level-info">Level: <span id="level">1</span></p>
-        <p class="guess-info">Number of Guesses: <span id="guessCount">0</span></p>
-        <p class="time-info">Time on Level: <span id="timeSpent">0</span> seconds</p>
-        <button class="admin-button" onclick="showAdminLogin()">Admin Mode</button>
-        <div class="admin-controls" id="adminControls">
-            <p>Correct Answer: <span id="adminAnswer"></span></p>
-            <p>Set New Level: <input type="number" id="newLevel" min="1" max="1000"></p>
-            <p>Set Custom Answer: <input type="number" id="customAnswer"></p>
-            <button onclick="setLevel()">Set Level</button>
-            <button onclick="setCustomAnswer()">Set Custom Answer</button>
-            <button onclick="exitAdminMode()">Exit Admin Mode</button>
+    <div class="container">
+        <div id="admin-menu-container">
+            <button id="admin-menu-button">Admin</button>
+            <div id="admin-controls" class="hidden">
+                <input type="password" id="admin-password" placeholder="Admin Password">
+                <button id="admin-login">Login</button>
+                 <button id="reset-data-button" class="hidden">Reset Data</button>
+                <button id="admin-close" class="hidden">Close Admin</button>
+                <p id="admin-secret-display" class="hidden">Secret Number: <span id="secret-number-value"></span></p>
+            </div>
         </div>
-        <button class="level-menu-button" onclick="showLevelMenu()">Level Menu</button>
-        <div class="game-footer">Created and Scripted by MelonnTheCreator</div>
+        <div id="game-area">
+             <h1 id="title">Guess The Number</h1>
+            <p id="level-display">Level: 1</p>
+            <p id="range-display">Guess between 1 and 10</p>
+             <div class="guess-area">
+                 <input type="number" id="guess-input" placeholder="Enter your guess">
+                 <div class = "button-area">
+                    <button id="guess-button">Guess</button>
+                   <button id="reset-button">Reset</button>
+                 </div>
+              </div>
+            <p id="last-guess-display">Last Guess: None</p>
+            <p id="message"></p>
+        </div>
+
+         <div id="level-menu-container">
+            <button id="level-menu-button">Select Level</button>
+            <div id="level-menu" class="hidden">
+            </div>
+         </div>
+         <div id="leaderboard-area" class="hidden">
+              <h2>Leaderboard</h2>
+                <div id="leaderboard-list"></div>
+         </div>
+        <p id="level-100-count" class="hidden">Level 100 Completions: 0</p>
     </div>
-    <audio id="bg-music" src="background-music.mp3" loop></audio>
-    <audio id="correct-sound" src="correct-sound.mp3"></audio>
-    <audio id="wrong-sound" src="wrong-sound.mp3"></audio>
     <script src="script.js"></script>
 </body>
 </html>
